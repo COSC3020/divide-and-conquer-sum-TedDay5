@@ -20,6 +20,6 @@ function sumOfArrays(tail, head, temp) {
     else {
         var thrid1 = tail + Math.floor((head - tail)/3);
         var thrid2 = tail + 2 * Math.floor((head - tail)/3) + 1;
-        return (sumOfArrays(tail, thrid1, temp)) + (sumOfArrays(thrid1, thrid2, temp)) + (sumOfArrays(thrid2, head, temp);
+        return ((sumOfArrays(tail, thrid1, temp)) + (sumOfArrays(thrid1, thrid2, temp)) + (sumOfArrays(thrid2, head, temp)));
     }
 }
