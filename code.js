@@ -1,22 +1,25 @@
 function divideAndConquerSum(a) {
-    return sumOfArrays(a, 0, a.length-1);
-}
-
-function sumOfArrays(a, head, tail) {
-    if (head > tail) {
+    if (a.length == 0) {
         return 0;
     }
-    if (head === tail) {
-        return a[head];
+    return (sumOfArrays(0, a.length-1, a) + a[a.length-1]);
+}
+
+function sumOfArrays(tail, head, temp) {
+    if (head - tail <= 1) {
+        if (head == tail) {
+            return 0;
+        }
+        else if (tail < head) {
+            return temp[tail];
+        }
+        else {
+            return 0;
+        }
     }
-
-    const split = Math.floor((tail - head + 1)/3);
-    const thrid1 = head + split;
-    const thrid2 = head + (split*2);
-
-    const subA1 = sumOfArrays(a, head, thrid1-1);
-    const subA2 = sumOfArrays(a, thrid1, thrid2-1);
-    const subA3 = sumOfArrays(a, thrid2, tail);
-
-    return subA1 + subA2 + subA3;
+    else {
+        var thrid1 = tail + Math.floor((head - tail)/3);
+        var thrid2 = tail + 2 * Math.floor((head - tail)/3) + 1;
+        return (sumOfArrays(tail, thrid1, temp)) + (sumOfArrays(thrid1, thrid2, temp)) + (sumOfArrays(thrid2, head, temp);
+    }
 }
