@@ -25,3 +25,25 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+Recurrence relation: T(n) = 1 if n <= 2 otherwise T(n) = 3T(n/3) + 1
+
+The base case would be 1 since when n <= 2 we return the current answer so it'll be added with the others.
+The 3T takes in to consideration of the 3 recursive calls that are taken each time.
+The n/3 takes in to consideration we're dividing the size of the array by 3 everytime we make a recursive call.
+The + 1 is due to the if statement used to check if we are in the base case.
+
+T(n) = 3T(n/3) + 1
+= 3(3T(n/9)) + 1 + 1
+= 9T(n/9) + 2
+= 9T(3T(n/27)) + 2 + 1
+= 27T(n/27) + 3
+= 3^iT(n/3^i) + i
+
+(i = log_3 n because it gives us the base case for T)
+
+= 3^(log_3 n)T(n/3^(log_3 n)) + log_3 n
+= nT(1) + log_3 n
+= n + log_3 n ∈ Θ(n)
+
+The final answer is Θ(n) even since we are using recursion, we're only adding elements to an array, if we had to sort this array it would take much longer.
